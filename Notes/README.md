@@ -1,3 +1,7 @@
 # Notes
-Study notes created while learning SOC operations, Windows internals, networking, log analysis, threat detection, and cybersecurity fundamentals.
-The purpose of these notes is to consolidate concepts, commands, investigation techniques, and observations from hands-on labs.
+
+A collection of notes created while studying cybersecurity concepts, tools, operating systems, networking, and security investigations.
+
+These notes are used as a personal knowledge base to revisit concepts, commands, protocols, event IDs, investigation techniques, and observations encountered during labs and projects.
+
+The goal is not just to remember commands, but to understand why things happen and how they can be investigated.
