@@ -4,6 +4,42 @@
 
 This project demonstrates centralized SSH authentication monitoring using Splunk Enterprise. Authentication logs from an Ubuntu system were continuously collected, indexed, and analyzed to investigate failed login attempts, successful SSH authentications, and privileged user activity.
 
+              Kali Linux
+             (SSH Client)
+                   │
+      SSH Authentication Requests
+                   │
+                   ▼
+          Ubuntu Linux Server
+      ┌──────────────────────────┐
+      │ OpenSSH Service (sshd)   │
+      └──────────────────────────┘
+                   │
+                   ▼
+          Authentication Logs
+          (/var/log/auth.log)
+                   │
+        File Monitoring Input
+                   │
+                   ▼
+      ┌──────────────────────────┐
+      │ Splunk Enterprise        │
+      │                          │
+      │ Parsing & Indexing       │
+      │ Event Storage            │
+      │ Search Processing (SPL)  │
+      └──────────────────────────┘
+                   │
+                   ▼
+        Security Investigation
+      ┌──────────────────────────┐
+      │ Failed Logins            │
+      │ Successful Logins        │
+      │ Sudo Activity            │
+      │ Statistics               │
+      │ Time-based Visualization │
+      └──────────────────────────┘
+
 ## Lab Environment
 
 | Component | Details |
