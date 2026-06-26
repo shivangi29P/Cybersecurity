@@ -4,6 +4,27 @@
 
 This project focuses on SSH authentication monitoring and Linux log analysis using Ubuntu and Kali Linux in a controlled lab environment. Authentication events, user activity, and privileged operations were investigated through system logs.
 
+        Kali Linux (SSH Client)
+                 │
+                 │ SSH Authentication
+                 ▼
+        Ubuntu Linux Server
+      ┌─────────────────────────┐
+      │ OpenSSH Service (sshd)  │
+      └─────────────────────────┘
+                 │
+                 ▼
+      Linux Authentication Logs
+         (/var/log/auth.log)
+                 │
+                 ▼
+      ┌─────────────────────────┐
+      │ Linux Log Investigation │
+      └─────────────────────────┘
+                 │
+                 ▼
+      Authentication Investigation
+
 ## Lab Environment
 
 | Component  | Details                     |
