@@ -1,0 +1,58 @@
+# IPv4 Address & its Concepts
+
+## 1. Structural Architecture of an IPv4 Address
+
+An **IPv4 address** is a **32-bit logical identifier** managed globally by **IANA** and distributed down to endpoints.
+
+To make it readable, the **32 bits** are divided into **four 8-bit blocks** called **octets**.
+
+```text
+Decimal Notation
+
+192       . 168       . 10        . 15
+│           │           │           │
+11000000 . 10101000 . 00001010 . 00001111
+[1st Octet] [2nd Octet] [3rd Octet] [4th Octet]
+```
+
+### The Two-Part Division
+
+Every IPv4 address contains a variable boundary line dividing it into two distinct scopes:
+
+1. **Network ID:** Identifies the specific subnetwork segment on the internet. All hosts on the same physical or virtual wire must share an identical Network ID to communicate locally.
+
+2. **Host ID:** Identifies the specific device interface (laptop, server, router port) within that subnetwork. Must be completely unique inside that specific segment.
+
+---
+
+## 2. The Mechanics of the Subnet Mask
+
+An IP address cannot distinguish its own Network ID from its Host ID. The Operating System kernel requires a secondary **32-bit** number called a **Subnet Mask** to mathematically reveal the boundary using a continuous stream of binary `1`s followed by continuous binary `0`s.
+
+- **Binary 1:** Locks the corresponding bit position as part of the **Network ID**.
+- **Binary 0:** Unlocks the corresponding bit position as part of the **Host ID** pool.
+
+### The Bitwise AND Operation
+
+To route a packet, the host OS kernel or boundary router executes a bitwise logical `AND` operation between the incoming destination IP and the subnet mask. If the results match, the packet is local; if not, it is forwarded to the default gateway.
+
+```text
+Destination IP:    192.168.10.15 ➔ 11000000.10101000.00001010.00001111
+Subnet Mask (/24): 255.255.255.0 ➔ 11111111.11111111.11111111.00000000
+------------------------------------------------------------------------
+Network ID Result: 192.168.10.0  ➔ 11000000.10101000.00001010.00000000
+```
+
+---
+
+## 3. Addressing Schemas: Classful vs. Classless (CIDR)
+
+### Legacy Classful Addressing
+
+Historically, the global IP space was split into five rigid, pre-defined classes determined strictly by the leading bits of the first octet:
+
+- **Class A:** Allocates **8 bits** for Network ID and **24 bits** for Host ID.
+- **Class B:** Allocates **16 bits** for Network ID and **16 bits** for Host ID.
+- **Class C:** Allocates **24 bits** for Network ID and **8 bits** for Host ID.
+- **Class D:** Reserved for **Multicast** traffic streams.
+- **Class E:** Reserved for experimental research and development.
